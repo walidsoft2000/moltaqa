@@ -69,7 +69,7 @@ function rc(){const g=$("cG").value;const sysL=systemsOf(g);let tr;
  $("cMine").innerHTML=mine.map(c=>card(c,true)).join("")||"<p>لا اشتراكات هنا.</p>";
  $("cAvail").innerHTML=avail.map(c=>card(c,false)).join("")||"<p>لا كورسات.</p>";}
 function card(c,mine){const T=DB.get("users",c.teacherId),d=disc(c),inC=S.cart.some(x=>x.id===c.id);
- return `<div class="card"><h4>${c.title}</h4><p style="font-size:.78rem">${T?.name} ${caseOK()&&T?.sponsor?'<span class="badge b-g">🤍 كفيل</span>':""}</p>
+ return `<div class="card"><h4>${c.title}</h4><p style="font-size:.78rem">${T?.name} ${caseOK()&&T?.sponsor?'<span class="badge b-g">🤍 داعم</span>':""}</p>
  <p style="font-size:.75rem">${stars(ratingOf(c.teacherId))} <small>(${votesOf(c.teacherId)} صوت)</small> — 👥${enrCount(c.id)}</p>
  ${d?`<p style="font-size:.78rem"><s>${c.price}</s> → <b>${paid(c)}</b></p>`:`<p style="font-size:.78rem"><b>${c.price}</b> ج</p>`}
  ${mine?'<button class="btn b-gr" disabled title="مشترك">✔ مشترك</button>':inC?'<button class="btn b-x" disabled title="في السلة">✔ في السلة</button>':`<button class="btn bn" title="أضف للسلة" onclick="ac('${c.id}')">🛒 أضف</button>`}</div>`;}
@@ -82,7 +82,7 @@ function pay(){const m=$("pm").value;
  const items=S.cart.map(c=>({courseId:c.id,amount:paid(c),discount:disc(c)}));
  requestPayment(S.u.id,items,m);
  S.cart=[];hm();rCa();rc();toast("⏳ استُلم طلبك — بانتظار مراجعة الإدارة");}
-function rT(){$("tT").innerHTML="<tr><th>المعلم</th><th>المواد</th><th>التقييم</th><th>الحالة</th><th></th></tr>"+DB.where("users",u=>u.role==="teacher"&&u.status==="active").map(t=>`<tr><td>${t.name}</td><td>${[t.subjectId,t.subject2Id].filter(Boolean).map(s=>DB.get("subjects",s)?.name).join(" + ")}</td><td>${stars(ratingOf(t.id))} (${votesOf(t.id)})</td><td>${caseOK()&&t.sponsor?'<span class="badge b-g">🤍 كفيل</span>':'<span class="badge b-x">معتمد</span>'}</td><td><button class="btn bl" title="تقييم" onclick="rateT('${t.id}')">قيّم</button></td></tr>`).join("");}
+function rT(){$("tT").innerHTML="<tr><th>المعلم</th><th>المواد</th><th>التقييم</th><th>الحالة</th><th></th></tr>"+DB.where("users",u=>u.role==="teacher"&&u.status==="active").map(t=>`<tr><td>${t.name}</td><td>${[t.subjectId,t.subject2Id].filter(Boolean).map(s=>DB.get("subjects",s)?.name).join(" + ")}</td><td>${stars(ratingOf(t.id))} (${votesOf(t.id)})</td><td>${caseOK()&&t.sponsor?'<span class="badge b-g">🤍 داعم</span>':'<span class="badge b-x">معتمد</span>'}</td><td><button class="btn bl" title="تقييم" onclick="rateT('${t.id}')">قيّم</button></td></tr>`).join("");}
 function rateT(id){om(`<h3>تقييم ${tName(id)}</h3><label>النجوم</label><select id="rs"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select><label>تعليق</label><textarea id="rc2"></textarea><button class="btn bg" style="width:100%;margin-top:8px" onclick="DB.add('ratings',{studentId:S.u.id,teacherId:'${id}',stars:+$('rs').value,comment:$('rc2').value});hm();rT();toast('✔')">إرسال</button>`);}
 function rSub(){const pend=DB.where("transactions",t=>t.studentId===S.u.id&&t.status!=="مكتمل");
  $("myReq").innerHTML=pend.length?"<h4 style='margin:0 0 8px'>⏳ طلباتي</h4>"+pend.map(t=>`<div class="card" style="margin:8px 0"><h4>${DB.get("courses",t.courseId)?.title} <span class="badge ${t.status==='قيد المراجعة'?'b-x':'b-r'}">${t.status}</span></h4><p style="font-size:.78rem">إيصال ${t.receiptNo} — ${t.amount} ج — ${t.date}${t.status==='مرفوض'&&t.rejectReason?' — السبب: '+t.rejectReason:''}</p></div>`).join(""):"";
