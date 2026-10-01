@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>اختبارات الملتقى</title>
+<script src="data.js"></script>
+<style>body{font-family:'Cairo',sans-serif;background:#F2F4F7;padding:20px}h2{font-family:'Alexandria'}table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:right}.ok{color:#2E9E6B;font-weight:700}.no{color:#D64545;font-weight:700}button{background:#D4AF37;border:0;padding:10px 18px;border-radius:8px;font-weight:700;margin:4px}</style>
+</head><body>
+<h2>🧪 اختبارات تجربة المستخدم والترابط</h2>
+<button onclick="run('student')">طالب (13)</button><button onclick="run('teacher')">معلم (11)</button><button onclick="run('admin')">أدمن (9)</button><button onclick="run('integration')">ترابط</button><button onclick="runAll()">التقرير الكامل</button>
+<div id="out"></div>
+<script>
+function show(rows){$("out").innerHTML="<table><tr><th>المجموعة</th><th>المعيار</th><th>النتيجة</th></tr>"+rows.map(r=>`<tr><td>${r.suite||""}</td><td>${r.n}</td><td class="${r.ok?"ok":"no"}">${r.ok?"✔ ناجح":"✘ فشل"}</td></tr>`).join("")+"</table>";}
+function run(s){show(runSuite(s).map(r=>({...r,suite:s})));}
+function runAll(){show(fullReport());}
+const $=i=>document.getElementById(i);
+</script></body></html>

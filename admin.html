@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- ============================================================
+  منصة الملتقى — admin.html (مدير مربوط بـ data.js)
+  يغطي MVP أدمن(9): Dashboard حقيقي/اعتمادات/طلاب/كورسات/مدفوعات/
+  حالات خاصة/مستحقات/عمولة/تقارير + إدارة الروابط (بند 10)
+  عزل تام: لا وصلة له من index — يُفتح مباشرة.
+============================================================= -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة التحكم — الملتقى</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Alexandria:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="data.js"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css"></head><body>
+<div id="aL" class="aw"><div class="ab"><h3 style="text-align:center">🔐 لوحة التحكم</h3>
+<form id="aF"><label>البريد</label><input id="aE" type="email" required><label>كلمة المرور</label><input id="aP" type="password" required><button class="btn bg" style="width:100%;margin-top:10px">دخول</button></form>
+<p style="font-size:.66rem;color:#888;margin-top:8px;text-align:center">افتح admin.html مباشرة — لا وصلة من المنصة العامة</p></div></div>
+<div id="aA" class="hidden">
+<header><h2>🛡️ لوحة تحكم الملتقى</h2><small>غرفة التحكم</small><span style="flex:1"></span><button class="btn bg" onclick="location.reload()">خروج</button></header>
+<nav><button class="on" data-s="d" onclick="go('d')">📊 Dashboard</button><button data-s="ap" onclick="go('ap')">✅ الاعتمادات</button><button data-s="st" onclick="go('st')">👥 الطلاب</button><button data-s="co" onclick="go('co')">📚 الكورسات</button><button data-s="pay" onclick="go('pay')">💳 المدفوعات</button><button data-s="cs" onclick="go('cs')">🤍 الحالات</button><button data-s="du" onclick="go('du')">💰 المستحقات</button><button data-s="rp" onclick="go('rp')">📈 التقارير</button><button data-s="lk" onclick="go('lk')">🔗 الروابط</button><button data-s="ps" onclick="go('ps')">🔑 كلمة السر</button></nav>
+<main>
+<section id="s-d" class="on"><div class="grid g4" id="dS"></div><div class="grid g3" style="margin-top:12px" id="dF"></div></section>
+<section id="s-ap"><h3>✅ اعتماد المعلمين</h3><div class="card"><table id="apT"></table></div></section>
+<section id="s-st"><h3>👥 الطلاب</h3><div class="card"><table id="stT"></table></div></section>
+<section id="s-co"><h3>📚 الكورسات</h3><div class="card"><table id="coT"></table></div></section>
+<section id="s-pay"><div style="display:flex"><h3>💳 المدفوعات</h3><span style="flex:1"></span><button class="btn bn" onclick="expPay()">📥 XLSX</button></div><div class="card"><table id="payT"></table></div></section>
+<section id="s-cs"><h3>🤍 الحالات الخاصة</h3><div class="card"><table id="csT"></table></div></section>
+<section id="s-du"><h3>💰 المستحقات والعمولة</h3><div class="card"><table id="duT"></table></div></section>
+<section id="s-rp"><div style="display:flex"><h3>📈 تقرير مراجعة المعايير</h3><span style="flex:1"></span><button class="btn bn" onclick="expRep()">📥 تصدير</button></div><div class="card"><table id="rpT"></table></div></section>
+<section id="s-lk"><h3>🔗 إدارة الروابط الهامة</h3><div class="card"><div class="grid g4"><div><label>العنوان</label><input id="lkT"></div><div><label>URL</label><input id="lkU"></div><div><label>الدور</label><select id="lkR"><option value="both">الكل</option><option value="student">طالب</option><option value="teacher">معلم</option></select></div><div style="align-self:end"><button class="btn bg" onclick="addLk()">+ إضافة</button></div></div><table id="lkTb" style="margin-top:8px"></table></div></section>
+<section id="s-ps"><h3>🔑 تعديل كلمة السر</h3><div class="card" style="max-width:460px"><label>البريد المسجل</label><input id="pE"><label>القديمة</label><input type="password" id="pO"><label>الجديدة</label><input type="password" id="pN" oninput="pw(this.value,'pAu')"><div id="pAu" class="pw"></div><button class="btn bg" style="margin-top:10px" onclick="chP()">إرسال الجديدة للبريد</button></div></section>
+</main>
+<footer><div class="fg"><div><h4>عن المنصة</h4><p>الملتقى التعليمي.</p></div><div><h4>روابط</h4><a href="index.html">المنصة العامة</a></div><div><h4>قانوني</h4><a href="#" onclick="return false">شروط</a><a href="#" onclick="return false">خصوصية</a></div><div><h4>تواصل</h4><a href="mailto:walidsoft2000@gmail.com">البريد</a><a href="tel:01558976949">0155 897 6949</a><a href="tel:01063887785">0106 388 7785</a><p>رأس سدر</p></div></div><div class="fb">© 2026 الملتقى التعليمي</div></footer>
+</div>
+<script src="shared.js"></script>
+<script src="admin.js"></script></body></html>

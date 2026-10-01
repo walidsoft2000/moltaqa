@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- ============================================================
+  منصة الملتقى — index.html v3 (الجولة السادسة)
+  هرم صف/نظام/مسار/مواد + قائمة مزدوجة + حجرات + كاروسيل + شعار
+  + tooltips + نجوم متدرجة + فوتر Walidsoft + إنفوجراف + واجهة معلم بالصف
+============================================================= -->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>منصة الملتقى التعليمي</title>
+<link rel="icon" href="pictures/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Alexandria:wght@500;700;800&display=swap" rel="stylesheet">
+<script src="data.js"></script>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="index.css"></head><body>
+<!-- ========== Home ========== -->
+<div id="v-home">
+ <div class="sh"><img class="slogo" src="pictures/logo.png" onerror="this.remove()" alt=""><div><h2>منصة الملتقى التعليمي</h2><small>نلتقي لنتعلّم ... ونتعلّم لنرتقي</small></div>
+  <nav><a href="#feat" title="المميزات">المميزات</a><a href="#about" title="عن المنصة">عن المنصة</a><a href="#contact" title="تواصل">تواصل</a></nav>
+  <button class="btn bg" title="تسجيل الدخول" onclick="show('login')">دخول</button><button class="btn bn" title="إنشاء حساب جديد" onclick="show('reg')">إنشاء حساب</button></div>
+ <div class="car"><div class="slides" id="slides">
+   <div class="slide" onclick="show('reg')"><img src="pictures/carousel/c1.jpg" onerror="this.parentElement.outerHTML='<div class=\'slide\'><h1>منصة الملتقى التعليمي</h1><p style=\'color:var(--g)\'>نلتقي لنتعلّم ... ونتعلّم لنرتقي</p></div>'" alt="نلتقي لنتعلّم... ونتعلّم لنرتقي"></div>
+   <div class="slide" onclick="show('reg')"><img src="pictures/carousel/c2.jpg" onerror="this.remove()" alt="كل ما تحتاجه للتفوق — للطالب"></div>
+   <div class="slide" onclick="show('reg')"><img src="pictures/carousel/c3.jpg" onerror="this.remove()" alt="انضم كمعلم واصنع أثرك الأكاديمي"></div>
+   <div class="slide" onclick="show('reg')"><img src="pictures/carousel/c4.jpg" onerror="this.remove()" alt="المشاركة المجتمعية — روح المبادرة والكفالة"></div>
+   <div class="slide" onclick="show('reg')"><img src="pictures/carousel/c5.jpg" onerror="this.remove()" alt="انضم إلى مجتمع الملتقى اليوم"></div>
+  </div><button class="carr" title="السابق" onclick="carP(-1)">❮</button><button class="carr l" title="التالي" onclick="carP(1)">❯</button><div class="dots" id="dots"></div></div>
+ <div class="feat grid g4" id="feat">
+  <div class="card"><h4>📚 كورسات</h4><p>محتوى مصنّف بالصف والمسار</p></div>
+  <div class="card"><h4>👨‍🏫 معلمون معتمدون</h4><p>اعتماد إداري + تقييم وأصوات</p></div>
+  <div class="card"><h4>📝 اختبارات</h4><p>موضوعي فوري + مقالي بتقييم</p></div>
+  <div class="card"><h4>💻 معمل برمجة</h4><p>Python + JS داخل المنصة</p></div></div>
+ <div class="feat"><h3 id="about" style="margin-bottom:10px">عن المنصة</h3><div class="grid g4" id="hStats"></div></div>
+ <footer id="contact"><div class="fg"><div><h4>عن المنصة</h4><p>الملتقى التعليمي — مرحلة ثانوية.</p></div><div><h4>روابط</h4><a href="#feat">المميزات</a><a href="#about">عن المنصة</a></div><div><h4>قانوني</h4><a href="#" onclick="lg('t');return false">شروط</a><a href="#" onclick="lg('p');return false">خصوصية</a><a href="#" onclick="lg('s');return false">الكفالة</a></div><div><h4>تواصل</h4><p style="direction:ltr;text-align:right">walidsoft2000@gmail.com</p><p class="ph"><a href="tel:01558976949">0155 897 6949</a><a href="tel:01063887785">0106 388 7785</a><a href="https://chat.whatsapp.com/KC6xQYsRNlc2nNP3hHIBPv" target="_blank" rel="noopener" title="واتساب">💬</a></p><p>رأس سدر — جنوب سيناء</p></div></div><div class="fb">© 2026 الملتقى التعليمي — جميع الحقوق محفوظة <b>Walidsoft</b></div></footer>
+</div>
+<!-- ========== دخول ========== -->
+<div id="v-login" class="aw hidden"><div class="ab"><div style="text-align:center"><img src="pictures/logo.png" style="width:70px" onerror="this.remove()"></div><h3 style="text-align:center">تسجيل الدخول</h3>
+<form id="liF"><label>البريد</label><input id="liE" type="email" required><label>كلمة المرور</label><input id="liP" type="password" required><label>الدور</label><select id="liR"><option value="teacher">معلم</option><option value="student">طالب</option></select>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="liRem" style="width:auto" title="تذكرني"> حفظ بيانات الدخول</label>
+<button class="btn bg" style="width:100%;margin-top:8px" title="دخول">دخول</button></form>
+<p style="font-size:.68rem;color:#666">تجريبي:</p><div style="display:flex;gap:6px"><button class="btn bl" onclick="quick('t_0000001')">معلم</button><button class="btn bl" onclick="quick('s_0000001')">طالب</button></div>
+<button class="btn bl" style="width:100%;margin-top:8px" onclick="show('home')">الرئيسية</button></div></div>
+<!-- ========== تسجيل ========== -->
+<div id="v-reg" class="aw hidden"><div class="ab" style="width:min(560px,94%);max-height:92vh;overflow:auto"><div style="text-align:center"><img src="pictures/logo.png" style="width:60px" onerror="this.remove()"></div><h3>إنشاء حساب</h3>
+<label>الدور</label><select id="rgR" onchange="roleF()"><option value="student">طالب</option><option value="teacher">معلم</option></select>
+<form id="rgF">
+<label>الاسم الثلاثي</label><input id="rgN" placeholder="ثلاثي الكلمات">
+<label>الرقم القومي (14)</label><input id="rgNat" maxlength="14">
+<label>هاتف واتساب</label><input id="rgPh" maxlength="11">
+<div id="rgWw" class="hidden"><label>هاتف المحفظة</label><input id="rgWal" maxlength="11"></div>
+<label>البريد (Gmail)</label><input id="rgE" type="email">
+<label>كلمة المرور</label><input id="rgP" type="password" oninput="pw(this.value,'rgPw')"><div id="rgPw" class="pw"></div>
+<div id="rgTc" class="hidden">
+ <label>مستند إثبات مهنة التدريس</label><input id="rgDoc" type="file" accept=".pdf,image/*">
+ <label>التخصص الأساسي</label><select id="rgS1"></select>
+ <label>تخصص إضافي (اختياري)</label><select id="rgS2"><option value="">بدون</option></select>
+ <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="rgSp" style="width:auto" onchange="spOpen(this)" title="اتفاقية الكفالة"> كفيل 💚</label></div>
+<div id="rgSc">
+ <label>📜 حالة خاصة</label><select id="rgC" onchange="$('rgD').classList.toggle('hidden',this.value==='none')"><option value="none">بدون</option><option value="remote">نائية/حدودية 50%</option><option value="edu">أبناء تعليم 50%</option><option value="orphan">أيتام 100%</option></select>
+ <div id="rgD" class="hidden"><label>مستند</label><input id="rgDocS" type="file" accept=".pdf,image/*"></div></div>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="rgDecl" style="width:auto"> أقر بأن بياناتي صحيحة على مسئوليتي</label>
+<button class="btn bg" style="width:100%;margin-top:10px" title="تسجيل">تسجيل</button>
+<button type="button" class="btn bl" style="width:100%;margin-top:6px" onclick="show('home')">الرئيسية</button></form></div></div>
+<div id="v-wait" class="aw hidden"><div class="ab" style="text-align:center"><h3>⏳ طلبك قيد المراجعة</h3><p style="margin:10px 0;font-size:.85rem">سيُعتمد حسابك من الإدارة قريباً.</p><button class="btn bl" onclick="logout()">خروج</button></div></div>
+<!-- ========== التطبيق ========== -->
+<div id="v-app" class="hidden">
+<header><img class="slogo" src="pictures/logo.png" onerror="this.remove()"><div><h2>منصة الملتقى التعليمي</h2><small>نلتقي لنتعلّم ... ونتعلّم لنرتقي</small></div><div class="sb"><input id="q" placeholder="🔍" title="بحث عام" oninput="ss(this.value)"></div><button class="btn bg" title="تسجيل الخروج" onclick="logout()">خروج</button><button class="gear" title="الإعدادات" onclick="go('set')">⚙️</button><div class="av" id="av" title="الملف الشخصي" onclick="go('set')">؟</div></header>
+<nav class="m" id="nav"></nav><main>
+<section id="s-home"><h3 id="hT"></h3><div class="grid g3" id="hS" style="margin:12px 0"></div><div class="grid g3"><div class="card"><h4>🏆 الشرف</h4><div id="hH"></div></div><div class="card"><h4>⚡ نشاطات</h4><div id="hA"></div></div><div class="card"><h4>🔗 روابط هامة</h4><div id="hL"></div></div></div><div class="card" style="margin-top:12px"><h4>📈 ملخصك</h4><div id="hBar"></div></div></section>
+<section id="s-courses"><h3>📚 الكورسات</h3>
+ <div class="grid g4" style="margin:10px 0"><div><label>الصف</label><select id="cG" onchange="rc()" title="الصف الدراسي"></select></div><div id="cSyW"><label>النظام</label><select id="cSys" onchange="rc()" title="بكالوريا/ثانوية عامة"></select></div><div id="cTw"><label>المسار</label><select id="cT" onchange="rc()" title="المسار/الشعبة"></select></div><div><label>فرز</label><select id="cSort" onchange="rc()" title="ترتيب العرض"><option value="rate">الأعلى تقييماً</option><option value="votes">الأكثر تصويتاً</option><option value="enr">الأكثر التحاقاً</option></select></div></div>
+ <div id="cSubs" style="margin:8px 0"></div>
+ <h4 style="margin:10px 0 6px">🎓 المشترك بها (النشطة)</h4><div class="grid g3" id="cMine"></div>
+ <h4 style="margin:14px 0 6px">📚 غير المشترك بها</h4><div class="grid g3" id="cAvail"></div></section>
+<section id="s-cart"><h3>🛒 السلة</h3><div class="card"><table id="caT"></table></div><div class="card" style="margin-top:10px"><div id="caTot"></div><button class="btn bg" title="دفع" onclick="co()">دفع</button></div></section>
+<section id="s-teachers"><h3>👨🏫 المعلمون</h3><div class="card"><table id="tT"></table></div></section>
+<section id="s-subs"><h3>🎓 اشتراكاتي</h3><div id="myReq"></div><div id="subB"></div><h4 style="margin:12px 0 6px">🚪 حجراتي الخاصة</h4><div id="myRooms"></div></section>
+<section id="s-myc"><h3>📚 كورساتي <span class="badge b-g" id="mcS"></span></h3>
+ <div style="display:flex;gap:6px;margin:8px 0"><button class="btn bn" id="tb1" onclick="mTab('r_1')">الأول</button><button class="btn bl" id="tb2" onclick="mTab('r_2')">الثاني</button><button class="btn bl" id="tb3" onclick="mTab('r_3')">الثالث</button></div>
+ <div class="card"><div class="grid g4"><div id="mSyW"><label>النظام</label><select id="mSys" onchange="rmc()"></select></div><div id="mTW"><label>المسار</label><select id="mT" onchange="rmc()"></select></div><div><label>المادة</label><select id="mSub"></select></div><div><label>العنوان</label><input id="mcT"></div></div><div class="grid g4" style="margin-top:6px"><div><label>السعر</label><input id="mcP" type="number" value="200"></div></div><button class="btn bg" title="إضافة كورس" onclick="addC()">+ كورس</button></div>
+ <div class="grid g3" id="mcL" style="margin-top:10px"></div>
+ <div class="card" style="margin-top:12px"><h4>📁 المحتوى + الجدولة</h4><div class="grid g4"><div><label>النوع</label><select id="lTy"><option>وورد</option><option>باوربوينت</option><option>فيديو</option><option>تقييم</option><option>جوجل فورم</option><option>رابط</option></select></div><div><label>العنوان</label><input id="lTi"></div><div><label>ملف/رابط</label><input id="lF"></div><div><label>موعد</label><input id="lW" type="datetime-local"></div></div><button class="btn bn" onclick="addL()">نشر/جدولة</button><table id="lT" style="margin-top:8px"></table></div></section>
+<section id="s-mys"><h3>👥 طلابي</h3><select id="msC" onchange="rms()" style="max-width:320px;margin:10px 0" title="اختر كورساً"></select><div class="card"><table id="stT"></table></div></section>
+<section id="s-acc"><h3>💰 حسابي</h3><div class="grid g3" id="aS" style="margin:12px 0"></div><div class="card"><h4>📊 إنفوجراف الإيراد (آخر 4 أشهر)</h4><div id="aBar" style="margin:10px 0"></div><table id="aT"></table></div></section>
+<section id="s-exam"><h3>📝 الاختبارات</h3><div id="exB"></div></section>
+<section id="s-links"><h3>🔗 روابط هامة</h3><div class="grid g3" id="lkB"></div></section>
+<section id="s-board"><h3>🖊️ السبورة</h3><div style="display:flex;gap:8px;margin:10px 0"><a class="btn bg" href="https://excalidraw.com" target="_blank" rel="noopener">فتح</a><a class="btn bn" href="https://meet.google.com/new" target="_blank" rel="noopener">🎥 Meet</a></div><div class="card"><iframe src="https://excalidraw.com" style="width:100%;height:360px;border:0" title="سبورة"></iframe></div></section>
+<section id="s-lab"><h3>💻 معمل الكود</h3><div id="labB"></div></section>
+<section id="s-set"><h3>⚙️ الإعدادات</h3><div class="card" style="max-width:460px"><label>أفاتار جاهز</label><div id="avP" style="display:flex;gap:6px;flex-wrap:wrap"></div><label>أو ارفع صورة</label><input type="file" accept="image/*" onchange="upAv(this)"><label>كلمة مرور</label><input type="password" id="sW" oninput="pw(this.value,'sPw')"><div id="sPw" class="pw"></div><button class="btn bg" onclick="cp()">حفظ</button></div></section>
+</main>
+<footer><div class="fg"><div><h4>عن المنصة</h4><p>الملتقى التعليمي.</p></div><div><h4>روابط</h4><a href="#" onclick="go('home');return false">الرئيسية</a><a href="#" onclick="go('courses');return false">الكورسات</a></div><div><h4>قانوني</h4><a href="#" onclick="lg('t');return false">شروط</a><a href="#" onclick="lg('p');return false">خصوصية</a><a href="#" onclick="lg('s');return false">الكفالة</a></div><div><h4>تواصل</h4><p style="direction:ltr;text-align:right">walidsoft2000@gmail.com</p><p class="ph"><a href="tel:01558976949">0155 897 6949</a><a href="tel:01063887785">0106 388 7785</a><a href="https://chat.whatsapp.com/KC6xQYsRNlc2nNP3hHIBPv" target="_blank" rel="noopener" title="واتساب">💬</a></p><p>رأس سدر</p></div></div><div class="fb">© 2026 الملتقى التعليمي — جميع الحقوق محفوظة <b>Walidsoft</b></div></footer>
+</div>
+<div id="md" class="aw hidden" style="position:fixed;inset:0;z-index:50"><div class="ab" style="max-height:88vh;overflow:auto"><div id="mdB"></div><button class="btn bl" style="width:100%;margin-top:10px" onclick="hm()">إغلاق</button></div></div>
+<script src="shared.js"></script>
+<script src="index.js"></script></body></html>
